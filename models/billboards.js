@@ -29,7 +29,7 @@ module.exports = function (sequelize, DataTypes){
         },
       },
       ticketsSold: {
-        types: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0,
       },
@@ -65,5 +65,17 @@ module.exports = function (sequelize, DataTypes){
       schema: 'public',
     },
   );
+
+  Billboards.associate = (models) => {
+    Billboards.belongsTo(models.rooms, {
+      foreignKey: 'fk_roomsId',
+      as: 'room',
+    });
+    Billboards.belongsTo(models.movies, {
+      foreignKey: 'fk_moviesId',
+      as: 'movie',
+    });
+  };
+
   return Billboards;
 };

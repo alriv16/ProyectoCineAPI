@@ -56,5 +56,17 @@ module.exports = function (sequelize, DataTypes) {
       schema: 'public',
     },
   );
+
+  Seats.associate = (models) => {
+    Seats.belongsTo(models.rooms, {
+      foreignKey: 'fk_roomsId',
+      as: 'room',
+    });
+    Seats.belongsTo(models.statuses, {
+      foreignKey: 'fk_statusesId',
+      as: 'status',
+    });
+  };
+
   return Seats;
 };

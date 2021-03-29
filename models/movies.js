@@ -64,5 +64,13 @@ module.exports = function (sequelize, DataTypes) {
       schema: 'public',
     },
   );
+
+  Movies.associate = (models) => {
+    Movies.hasMany(models.billboards, {
+      foreignKey: 'fk_moviesId',
+      as: 'movies',
+    });
+  };
+
   return Movies;
 };

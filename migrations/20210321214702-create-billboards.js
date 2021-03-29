@@ -29,7 +29,7 @@ module.exports = {
         },
       },
       ticketsSold: {
-        types: Sequelize.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 0,
       },

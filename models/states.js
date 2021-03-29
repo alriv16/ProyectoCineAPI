@@ -46,5 +46,13 @@ module.exports = function (sequelize, DataTypes) {
       schema: 'public',
     }
   );
+
+  States.associate = (models) => {
+    States.hasMany(models.cities, {
+      foreignKey: 'fk_statesId',
+      as: 'cities',
+    });
+  };
+
   return States;
 };

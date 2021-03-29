@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   const Rooms = sequelize.define(
-    "rooms",
+    'rooms',
     {
       roomsId: {
         autoIncrement: true,
@@ -17,9 +17,9 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
         references: {
           model: {
-            tableName: "cinemaBranchRooms",
+            tableName: 'cinemaBranchRooms',
           },
-          key: "cinemaBranchRoomsId",
+          key: 'cinemaBranchRoomsId',
         },
       },
       capacity: {
@@ -33,7 +33,7 @@ module.exports = function (sequelize, DataTypes) {
       createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
         type: DataTypes.DATE,
@@ -50,9 +50,21 @@ module.exports = function (sequelize, DataTypes) {
     },
     {
       sequelize,
-      tableName: "rooms",
-      schema: "public",
+      tableName: 'rooms',
+      schema: 'public',
     }
   );
+
+  Rooms.associate = (models) => {
+    Rooms.hasMany(models.seats, {
+      foreignKey: 'fk_roomsId',
+      as: 'rooms',
+    });
+    Rooms.belongsTo(models.cinemaBranchRooms, {
+      foreignKey: 'fk_cinemaBranchRoomsId',
+      as: 'cinemaBranchRoom',
+    });
+  };
+
   return Rooms;
 };

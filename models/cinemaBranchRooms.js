@@ -42,5 +42,17 @@ module.exports = function (sequelize, DataTypes) {
       schema: 'public',
     }
   );
+
+  CinemaBranchRooms.associate = (models) => {
+    CinemaBranchRooms.hasMany(models.rooms, {
+      foreignKey: 'fk_cinemaBranchRoomsId',
+      as: 'cinemaBranchRooms',
+    });
+    CinemaBranchRooms.belongsTo(models.cinemaBranches, {
+      foreignKey: 'fk_cinemaBranchesId',
+      as: 'cinemaBranch',
+    });
+  };
+
   return CinemaBranchRooms;
 };

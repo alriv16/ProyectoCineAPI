@@ -40,5 +40,13 @@ module.exports = function(sequelize, DataTypes) {
       schema: 'public',
     }
   );
+
+  Statuses.associate = (models) => {
+    Statuses.hasMany(models.seats, {
+      foreignKey: 'fk_statusesId',
+      as: 'statuses',
+    });
+  };
+
   return Statuses;
 };

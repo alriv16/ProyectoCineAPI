@@ -1,4 +1,3 @@
-
 module.exports = function (sequelize, DataTypes) {
   const Cities = sequelize.define(
     'cities',
@@ -41,12 +40,24 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
-      },
-      { 
-        sequelize,
-        tableName: 'cities',
-        schema: 'public',
-      },
+    },
+    {
+      sequelize,
+      tableName: 'cities',
+      schema: 'public',
+    }
   );
+
+  Cities.associate = (models) => {
+    Cities.hasMany(models.cinemaBranches, {
+      foreignKey: 'fk_citiesId',
+      as: 'cinemaBranches',
+    });
+    Cities.belongsTo(models.states, {
+      foreignKey: 'fk_statesId',
+      as: 'state',
+    });
+  };
+
   return Cities;
 };
