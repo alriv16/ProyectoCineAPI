@@ -13,7 +13,7 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
       },
       seatsAvailable: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       typeOfRoom: {
