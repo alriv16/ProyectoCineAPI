@@ -12,16 +12,6 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      fk_cinemaBranchRoomsId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: 'cinemaBranchRooms',
-          },
-          key: 'cinemaBranchRoomsId',
-        },
-      },
       capacity: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -60,7 +50,7 @@ module.exports = function (sequelize, DataTypes) {
       foreignKey: 'fk_roomsId',
       as: 'rooms',
     });
-    Rooms.belongsTo(models.cinemaBranchRooms, {
+    Rooms.hasMany(models.cinemaBranchRooms, {
       foreignKey: 'fk_cinemaBranchRoomsId',
       as: 'cinemaBranchRoom',
     });

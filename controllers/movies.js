@@ -1,4 +1,4 @@
-const States = require('../models').movies;
+const Movies = require('../models').movies;
 
 module.exports = {
   /**
@@ -19,7 +19,7 @@ module.exports = {
    *    HTTP/1.1 400 Bad Request Error
    * */
    count(req, res) {
-    States.count()
+    Movies.count()
       .then((result) => res.status(200).send({ count: result }))
       .catch((err) => res.status(400).send({ status: 400, response: err }));
   },
@@ -78,7 +78,7 @@ module.exports = {
    *    HTTP/1.1 400 Bad Request Error
    * */
    create(req, res) {
-    Movies.bulkCreate([...req.body], { fields: ['name', 'duration', 'genre', 'rating', 'format','language', 'director', 'cast', 'createdBy'] })
+    Movies.bulkCreate([...req.body])
       .then((result) => res.status(200).send(result))
       .catch((err) => res.status(400).send({ status: 400, response: err }));
   },

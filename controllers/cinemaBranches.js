@@ -60,7 +60,7 @@ module.exports = {
    *    HTTP/1.1 400 Bad Request Error
    * */
    create(req, res){
-       CinemaBranches.create([...req.body], { fields: ['name', 'fk_citiesId', 'createdBy'] })
+       CinemaBranches.bulkCreate([...req.body])
        .then((result) => res.status(200).send(result))
        .catch((err) => res.status(400).send({ status: 400, response: err }));
    },
@@ -184,7 +184,7 @@ module.exports = {
   *    HTTP/1.1 400 Bad Request Error
   * */
  update(req, res) {
-     CinemaBranches.update({ ...req.body }, { where: { statesId: req.params.id } })
+     CinemaBranches.update({ ...req.body }, { where: { cinemaBranchesId: req.params.id } })
      .then((result) => res.status(200).send({ rows: result }))
      .catch((err) => res.status(400).send({ status: 400, response: err }));
  },

@@ -60,7 +60,7 @@ count(req, res) {
    *    HTTP/1.1 400 Bad Request Error
    * */
   create(req, res){
-      Cities.Create([...req.body], { fields: ['name', 'fk_statesId', 'createdBy']})
+      Cities.bulkCreate([...req.body])
       .then((result)=> res.status(200).send(result)).
       catch((err) => res.status(400).send({ status: 400, response: err}));
   },

@@ -17,6 +17,15 @@ module.exports = function (sequelize, DataTypes) {
           },
           key: 'cinemaBranchesId',
         },
+      },fk_roomsId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: 'rooms',
+          },
+          key: 'roomssId',
+        },
       },
       createdAt: {
         type: DataTypes.DATE,
@@ -44,13 +53,13 @@ module.exports = function (sequelize, DataTypes) {
   );
 
   CinemaBranchRooms.associate = (models) => {
-    CinemaBranchRooms.hasMany(models.rooms, {
-      foreignKey: 'fk_cinemaBranchRoomsId',
-      as: 'cinemaBranchRooms',
-    });
     CinemaBranchRooms.belongsTo(models.cinemaBranches, {
       foreignKey: 'fk_cinemaBranchesId',
       as: 'cinemaBranch',
+    });
+    CinemaBranchRooms.belongsTo(models.rooms, {
+      foreignKey: 'fk_roomsId',
+      as: 'room',
     });
   };
 

@@ -66,15 +66,7 @@ module.exports = {
    *    HTTP/1.1 400 Bad Request Error
    * */
   create(req, res) {
-    Rooms.create({ ...req.body }, {
-      fields: [
-        "name",
-        "fk_storeBranchRoomsId",
-        "fk_statusId",
-        "capacity",
-        "createdBy",
-      ],
-    })
+    Rooms.create({ ...req.body })
       .then((result) => res.status(200).send(result))
       .catch((err) => res.status(400).send({ status: 400, response: err }));
   },
@@ -135,7 +127,7 @@ module.exports = {
       query = JSON.parse(req.query.filter);
     }
 
-    States.findAll(query)
+    Rooms.findAll(query)
       .then((result) => res.status(200).send(result))
       .catch((err) => res.status(400).send({ status: 400, response: err }));
   },

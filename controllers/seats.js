@@ -63,7 +63,7 @@ module.exports = {
    *    HTTP/1.1 400 Bad Request Error
    * */
    create(req, res){
-       Seats.create([...req.body], { fields: ['numberOfSeats', 'fk_roomsId', 'fk_statusesId','createdBy'] })
+       Seats.bulkCreate([...req.body])
        .then((result) => res.status(200).send(result))
        .catch((err) => res.status(400).send({ status: 400, response: err }));
    },

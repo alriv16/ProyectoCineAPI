@@ -12,16 +12,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      fk_cinemaBranchRoomsId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: 'cinemaBranchRooms',
-          },
-          key: 'cinemaBranchRoomsId',
-        }
-      },
       capacity: {
         type: Sequelize.INTEGER,
         allowNull: false,

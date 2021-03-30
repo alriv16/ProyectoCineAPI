@@ -18,6 +18,16 @@ module.exports = {
           key: 'cinemaBranchesId',
         },
       },
+      fk_roomsId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: 'rooms',
+          },
+          key: 'roomsId',
+        },
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
