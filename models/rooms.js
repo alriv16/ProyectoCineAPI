@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
       },
       seatsAvailable: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
       typeOfRoom: {
         type: DataTypes.STRING,
