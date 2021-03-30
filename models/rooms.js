@@ -12,13 +12,17 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      capacity: {
+      seatsAvailable: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
       typeOfRoom: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      showTimes: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
       },
       createdAt: {
         type: DataTypes.DATE,
