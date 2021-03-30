@@ -46,7 +46,7 @@ module.exports = function (sequelize, DataTypes) {
     Schedules.associate = (models) => {
       Schedules.belongsTo(models, {
         foreignKey: 'fk_moviesId',
-        as: 'movies'
+        as: 'movie'
       });
     };
   

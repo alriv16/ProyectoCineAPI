@@ -76,8 +76,13 @@ module.exports = function (sequelize, DataTypes) {
   Movies.associate = (models) => {
     Movies.hasMany(models.billboards, {
       foreignKey: 'fk_moviesId',
-      as: 'movies',
+      as: 'billboards',
     });
+    Movies.hasMany(models.schedules, {
+      foreignKey: 'fk_moviesId',
+      as: 'shedules',
+    });
+    
   };
 
   return Movies;
